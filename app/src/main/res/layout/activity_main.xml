@@ -4,15 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="#00000000"
     tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="1357dp"
+        android:layout_height="1179dp"
+        android:contentDescription="@string/background"
+        android:rotation="90"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.765"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.233"
+        app:srcCompat="@drawable/background" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="409dp"
         android:layout_height="33dp"
         android:layout_marginTop="32dp"
-        android:background="#7A7A7A"
+        android:background="#003D5AFE"
         android:text="@string/expiry_date_tracker"
         android:textAlignment="center"
         android:textAllCaps="true"
@@ -43,16 +57,18 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="261dp"
-        android:layout_height="42dp"
+        android:layout_width="312dp"
+        android:layout_height="49dp"
         android:gravity="center"
-        android:text="Never eat expired products again !"
+        android:text="@string/never_eat_expired_products_again"
         android:textAllCaps="true"
         android:textColor="#FFFFFF"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.075" />
+        app:layout_constraintVertical_bias="0.163" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
