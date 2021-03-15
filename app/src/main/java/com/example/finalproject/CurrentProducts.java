@@ -1,4 +1,14 @@
 package com.example.finalproject;
 
-public class CurrentProducts {
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+
+public class CurrentProducts extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.current_products);
+    }
 }
