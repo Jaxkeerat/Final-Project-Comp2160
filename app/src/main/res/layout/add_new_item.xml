@@ -4,4 +4,89 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/imagebuy" />
+    android:background="@drawable/imagebuy"
+    android:scrollbarSize="40dp">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:scrollbarDefaultDelayBeforeFade="500"
+        android:scrollbarSize="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="167dp">
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/Product_Name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Product Name"
+        android:textSize="30sp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="114dp" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="411dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="164dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="vertical"
+        android:scrollbarSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/Product_Name">
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Product Quantity"
+            android:textSize="30sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="67dp"
+        android:text="Product Price"
+        android:textSize="30sp"
+        tools:layout_editor_absoluteX="-7dp"
+        tools:layout_editor_absoluteY="186dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:layout_editor_absoluteX="47dp">
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Date Of Purchase"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="468dp" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="47dp">
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
