@@ -1,0 +1,22 @@
+Follow This google docs guide to add firebase directly to your android studio as we will
+need to use this to manage our database to hold the product info.
+
+https://firebase.google.com/docs/android/setup
+
+youtube tutorial
+
+https://www.youtube.com/watch?v=dRYnm_k3w1w
+
+
+Backend documentation and research how to structure proper backend with examples
+
+https://cloud.google.com/solutions/mobile/mobile-firebase-app-engine-flexible
+
+
+Cloning the sample code
+Clone the front end client app code.
+git clone https://github.com/GoogleCloudPlatform/firebase-android-client
+Clone the backend servlet code.
+git clone https://github.com/GoogleCloudPlatform/firebase-appengine-backend
+
+WHY YOU NOT WORKING
