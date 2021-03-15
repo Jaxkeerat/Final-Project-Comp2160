@@ -18,5 +18,3 @@ Clone the front end client app code.
 git clone https://github.com/GoogleCloudPlatform/firebase-android-client
 Clone the backend servlet code.
 git clone https://github.com/GoogleCloudPlatform/firebase-appengine-backend
-
-WHY YOU NOT WORKING
