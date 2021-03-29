@@ -4,18 +4,21 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
+
     <Button
-        android:id="@+id/addBtn"
-        android:text="Add New Item"
+        android:id="@+id/main_page_button"
+        android:layout_width="fill_parent"
+        android:layout_height="66dp"
+        android:onClick="mainPage"
+        android:text="Back To Main Menu" />
+
+    <ListView
+        android:id="@+id/simpleListView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:onClick="addItems"/>
-    <ListView
-        android:id="@android:id/list"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:drawSelectorOnTop="false"
-        />
+        android:divider="#f00"
+        android:dividerHeight="1dp"
+        android:listSelector="#0f0"/> <!--list selector in green color--> />
 </LinearLayout>
 
 <!-- List Item code example match stack overflow example to use as base -->
