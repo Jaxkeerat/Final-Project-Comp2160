@@ -25,6 +25,7 @@ import com.google.firebase.database.MutableData;
 import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -58,16 +59,33 @@ public class CurrentProducts extends AppCompatActivity {
         String name = "good food";
         String expDate = "3/29/2021";
 
-        listItems.add(name);
-        listItems.add(expDate);
-        listItems.add(name);
-        listItems.add(expDate);
-        listItems.add(name);
-        listItems.add(expDate);
-        listItems.add(name);
-        listItems.add(expDate);
-        listItems.add(name);
-        listItems.add(expDate);
+        listItems.add("Twinkies, 1/20/2070");
+        listItems.add("Baked Beans, 4/20/2021");
+        listItems.add("Wonder Bread, 1/27/2022");
+        listItems.add("Kellogs chews, 5/12/2021");
+        listItems.add("PoppieSeed Muffinz, 3/29/2021");
+        listItems.add("twinkies, 1/20/2070");
+        listItems.add("Test Item Filler, 1/20/2020");
+        listItems.add("Test Item Filler, 1/20/2020");
+        listItems.add("Test Item Filler, 1/20/2020");
+        listItems.add("Test Item Filler, 1/20/2020");
+        listItems.add("Test Item Filler, 1/20/2020");
+        listItems.add("Test Item Filler, 1/20/2020");
+        listItems.add("Test Item Filler, 1/20/2020");
+        listItems.add("Test Item Filler, 1/20/2020");
+        listItems.add("Test Item Filler, 1/20/2020");
+        listItems.add("Test Item Filler, 1/20/2020");
+        listItems.add("Test Item Filler, 1/20/2020");
+        listItems.add("Test Item Filler, 1/20/2020");
+        listItems.add("Test Item Filler, 1/20/2020");
+        listItems.add("Test Item Filler, 1/20/2020");
+        listItems.add("Test Item Filler, 1/20/2020");
+        listItems.add("Test Item Filler, 1/20/2020");
+        listItems.add("Test Item Filler, 1/20/2020");
+        listItems.add("Test Item Filler, 1/20/2020");
+        listItems.add("Test Item Filler, 1/20/2020");
+        listItems.add("Test Item Filler, 1/20/2020");
+        Collections.sort(listItems);
 
         //populate list from db
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listItems);

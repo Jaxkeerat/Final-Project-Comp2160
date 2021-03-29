@@ -10,12 +10,16 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
-
 
 
 public class add_new_item extends AppCompatActivity {
@@ -28,7 +32,7 @@ public class add_new_item extends AppCompatActivity {
 
     FirebaseDatabase firebaseDatabase;
 
-    DatabaseReference databaseReference;
+    private DatabaseReference mdb;
 
     Data_storage data_storage;
 
@@ -43,7 +47,9 @@ public class add_new_item extends AppCompatActivity {
         editTextDate=(EditText)findViewById(R.id.editTextDate);
 
         firebaseDatabase =FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("Data_storage");
+
+        //database connection
+        mdb =  FirebaseDatabase.getInstance("https://finalproject-cd6bb-default-rtdb.firebaseio.com/").getReference();
 
         data_storage = new Data_storage();
 
@@ -107,10 +113,11 @@ public class add_new_item extends AppCompatActivity {
         data_storage.setPrice_input(price);
         data_storage.setItem_quantity(quantity);
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        Query databaseReference;
+        mdb.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                databaseReference.setValue(data_storage);
+                mdb.setValue(data_storage);
 
                 Toast.makeText(add_new_item.this,"Product has been addes", Toast.LENGTH_SHORT).show();
             }
