@@ -10,22 +10,31 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
 
-    protected Button addButton ;
+    Button addButton, currentButton, expiredButton ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        addButton = (Button )findViewById(R.id.addButton);
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addButtonActivity();
-            }
-        });
+        addButton = findViewById(R.id.addBTN);
+        currentButton = findViewById(R.id.currButton);
+        expiredButton =  findViewById(R.id.expButton);
+
     }
-    public void addButtonActivity(){
+
+    public void openAddActivity(View view){
         Intent intent = new Intent(this, add_new_item.class);
         startActivity(intent);
     }
+     public void openCurrent(View view) {
+        Intent intent  = new Intent(this, CurrentProducts.class);
+        startActivity(intent);
+      }
+      public void openExpActivity( View view){
+        Intent intent = new Intent(this, expired_products.class);
+        startActivity(intent);
+
+      }
+
+
 }
