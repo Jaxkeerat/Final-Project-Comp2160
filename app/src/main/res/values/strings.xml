@@ -17,4 +17,8 @@
     <string name="product">Product</string>
     <string name="_0">0</string>
     <string name="zero">0</string>
+    <string name="current_products">Current Products</string>
+    <string name="string_expired_products">Expired Products</string>
+    <string name="textview" />
+    <string name="price_hint">0.00</string>
 </resources>

@@ -7,7 +7,7 @@
     android:background="#000000"
     tools:context=".expired_products">
 
-    <TextView
+        <TextView
         android:id="@+id/title_expire"
         android:layout_width="413dp"
         android:layout_height="63dp"
