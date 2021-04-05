@@ -16,8 +16,6 @@
             android:name=".add_new_item"></activity>
         <activity android:name=".CurrentProducts"></activity>
         <activity android:name=".expired_products"></activity>
-        <activity android:name=".CurrentProducts"></activity>
-        <activity android:name=".add_new_item"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

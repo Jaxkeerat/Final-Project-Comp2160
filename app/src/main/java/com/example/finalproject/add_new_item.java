@@ -57,6 +57,7 @@ public class add_new_item extends AppCompatActivity {
         plus = findViewById(R.id.plus);
         minus = findViewById(R.id.minus);
         item_quantity = findViewById(R.id.item_quantity);
+        button2 = findViewById(R.id.button2);
 
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,12 +75,12 @@ public class add_new_item extends AppCompatActivity {
             }
         });
 
-        add_image_button.setOnClickListener(new View.OnClickListener() {
+        /*add_image_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
             }
-        });
+        });*/
 
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
