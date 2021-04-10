@@ -120,7 +120,7 @@ public class add_new_item extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mdb.setValue(data_storage);
 
-                Toast.makeText(add_new_item.this,"Product has been addes", Toast.LENGTH_SHORT).show();
+                Toast.makeText(add_new_item.this,"Product has been added", Toast.LENGTH_SHORT).show();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {

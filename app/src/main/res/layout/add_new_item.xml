@@ -3,13 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/imagebuy"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_3"
+    android:backgroundTintMode="screen"
+    android:foregroundGravity="center_horizontal"
     android:orientation="vertical"
     android:paddingStart="5dp"
+    android:paddingTop="35dp"
     android:paddingEnd="10dp"
+    android:paddingBottom="40dp"
     android:scrollbarSize="40dp"
-    tools:ignore="labelfor">
+    tools:ignore="labelfor"
+    tools:visibility="visible">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,7 +32,9 @@
                 android:id="@+id/Product_Name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:shadowColor="#FFFFFF"
                 android:text="@string/product"
+                android:textColor="#F8F8F7"
                 android:textSize="30sp"
                 tools:layout_editor_absoluteX="41dp"
                 tools:layout_editor_absoluteY="22dp" />
@@ -38,11 +45,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
+                android:autofillHints=""
                 android:hint="@string/product"
                 android:inputType="textPersonName"
+                android:outlineAmbientShadowColor="#FFFFFF"
+                android:shadowColor="#FFFFFF"
+                android:textColor="#FFFFFF"
                 tools:layout_editor_absoluteX="167dp"
-                tools:layout_editor_absoluteY="16dp"
-                android:autofillHints="" />
+                tools:layout_editor_absoluteY="16dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -55,6 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/price"
+                android:textColor="#FFFFFF"
                 android:textSize="30sp"
                 tools:layout_editor_absoluteX="71dp"
                 tools:layout_editor_absoluteY="88dp" />
@@ -63,12 +74,12 @@
                 android:id="@+id/price_input"
                 android:layout_width="170dp"
                 android:layout_height="40dp"
+                android:autofillHints=""
                 android:ems="10"
+                android:hint="@string/price_hint"
                 android:inputType="numberDecimal"
                 tools:layout_editor_absoluteX="186dp"
-                tools:layout_editor_absoluteY="86dp"
-                android:hint="@string/price_hint"
-                android:autofillHints="" />
+                tools:layout_editor_absoluteY="86dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -81,6 +92,7 @@
                 android:layout_width="138dp"
                 android:layout_height="45dp"
                 android:text="@string/quantity"
+                android:textColor="#FFFFFF"
                 android:textSize="30sp"
                 tools:layout_editor_absoluteX="34dp"
                 tools:layout_editor_absoluteY="160dp" />
@@ -89,28 +101,31 @@
                 android:id="@+id/plus"
                 android:layout_width="48dp"
                 android:layout_height="47dp"
+                android:background="#AEEA00"
                 android:text="@string/add"
                 tools:layout_editor_absoluteX="177dp"
                 tools:layout_editor_absoluteY="158dp" />
 
-            <Button
-                android:id="@+id/minus"
-                android:layout_width="58dp"
-                android:layout_height="43dp"
-                android:text="@string/minus"
-                tools:layout_editor_absoluteX="304dp"
-                tools:layout_editor_absoluteY="162dp" />
 
             <EditText
                 android:id="@+id/item_quantity"
                 android:layout_width="77dp"
                 android:layout_height="wrap_content"
+                android:autofillHints=""
                 android:hint="@string/_1"
                 android:inputType="number"
                 android:textAlignment="center"
                 tools:layout_editor_absoluteX="231dp"
-                tools:layout_editor_absoluteY="160dp"
-                android:autofillHints="" />
+                tools:layout_editor_absoluteY="160dp" />
+            <Button
+                android:id="@+id/minus"
+                android:layout_width="58dp"
+                android:layout_height="43dp"
+                android:background="#AEEA00"
+                android:text="@string/minus"
+                tools:layout_editor_absoluteX="304dp"
+                tools:layout_editor_absoluteY="162dp" />
+
 
         </LinearLayout>
 
@@ -124,6 +139,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/expiry_date"
+                android:textColor="#FFFFFF"
                 android:textSize="30sp"
                 tools:layout_editor_absoluteX="44dp"
                 tools:layout_editor_absoluteY="298dp" />
@@ -132,12 +148,12 @@
                 android:id="@+id/editTextDate2"
                 android:layout_width="160dp"
                 android:layout_height="45dp"
+                android:autofillHints=""
                 android:ems="10"
+                android:hint="@string/zero"
                 android:inputType="date"
                 tools:layout_editor_absoluteX="221dp"
-                tools:layout_editor_absoluteY="301dp"
-                android:hint="@string/zero"
-                android:autofillHints="" />
+                tools:layout_editor_absoluteY="301dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -150,6 +166,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/purchase_date"
+                android:textColor="#FFFFFF"
                 android:textSize="26sp"
                 tools:layout_editor_absoluteX="41dp"
                 tools:layout_editor_absoluteY="235dp" />
@@ -159,16 +176,25 @@
                 android:id="@+id/editTextDate"
                 android:layout_width="116dp"
                 android:layout_height="45dp"
+                android:autofillHints=""
                 android:ems="10"
                 android:inputType="date"
                 tools:layout_editor_absoluteX="253dp"
-                tools:layout_editor_absoluteY="231dp"
-                android:autofillHints="" />
+                tools:layout_editor_absoluteY="231dp" />
         </LinearLayout>
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#AEEA00"
+            android:text="@string/add_product"
+            tools:layout_editor_absoluteX="103dp"
+            tools:layout_editor_absoluteY="663dp" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_width="370dp"
+            android:layout_height="177dp"
+            android:layout_marginTop="55dp"
             android:orientation="horizontal">
 
             <TextView
@@ -176,6 +202,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/image"
+                android:textColor="#FFFFFF"
                 android:textSize="36sp"
                 tools:layout_editor_absoluteX="41dp"
                 tools:layout_editor_absoluteY="437dp" />
@@ -185,19 +212,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
+                android:background="#AEEA00"
                 android:text="@string/click_to_add_image"
                 tools:layout_editor_absoluteX="183dp"
                 tools:layout_editor_absoluteY="446dp" />
         </LinearLayout>
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="210dp"
-            android:layout_height="52dp"
-            android:background="@color/teal_200"
-            android:text="@string/add_product"
-            tools:layout_editor_absoluteX="103dp"
-            tools:layout_editor_absoluteY="663dp" />
 
     </LinearLayout>
 

@@ -5,102 +5,108 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#00000000"
+    android:foregroundTint="#FFFFFF"
     tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="1357dp"
-        android:layout_height="1179dp"
+        android:layout_width="1132dp"
+        android:layout_height="1670dp"
         android:contentDescription="@string/background"
+        android:paddingTop="5dp"
+        android:paddingBottom="20dp"
         android:rotation="90"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.765"
+        app:layout_constraintHorizontal_bias="0.442"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.233"
-        app:srcCompat="@drawable/background" />
+        app:layout_constraintVertical_bias="0.635"
+        app:srcCompat="@drawable/background2" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="409dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="88dp"
         android:background="#003D5AFE"
-        android:text="@string/expiry_date_tracker"
+        android:paddingTop="40dp"
+        android:text="@string/daily_grocery_tracker"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.85" />
+        app:layout_constraintGuide_percent="1.0" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="312dp"
-        android:layout_height="49dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="52dp"
         android:gravity="center"
-        android:text="@string/never_eat_expired_products_again"
+        android:text="@string/app_going_to_reduce_the_waste_of_grocery"
         android:textAllCaps="true"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/addBTN"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.163" />
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/addBTN"
-        android:layout_width="82dp"
-        android:layout_height="75dp"
+        android:layout_width="152dp"
+        android:layout_height="130dp"
+        android:layout_marginBottom="48dp"
         android:background="#00FFFFFF"
-        android:foreground="@android:drawable/ic_input_add"
+        android:foreground="@drawable/icon"
         android:onClick="openAddActivity"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintBottom_toTopOf="@+id/currButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/currButton"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="#651FFF"
+        android:layout_width="152dp"
+        android:layout_height="130dp"
+        android:layout_marginBottom="72dp"
+        android:backgroundTint="@color/common_google_signin_btn_text_dark_disabled"
+        android:foreground="@drawable/icon2"
         android:onClick="openCurrent"
-        android:text="@string/current_products"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/expButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/expButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#651FFF"
+        android:layout_width="152dp"
+        android:layout_height="130dp"
+        android:backgroundTint="@color/common_google_signin_btn_text_dark"
+        android:foreground="@drawable/current_icon"
         android:onClick="openExpActivity"
-        android:text="@string/string_expired_products"
+        android:paddingBottom="20dp"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/addBTN"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
