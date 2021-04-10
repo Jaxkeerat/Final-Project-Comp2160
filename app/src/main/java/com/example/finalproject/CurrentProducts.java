@@ -64,8 +64,8 @@ public class CurrentProducts extends AppCompatActivity {
         listItems.add("Twinkies, 1/20/2070");
         listItems.add("Baked Beans, 4/20/2021");
         listItems.add("Wonder Bread, 1/27/2022");
-        listItems.add("Kellogs chews, 5/12/2021");
-        listItems.add("PoppieSeed Muffinz, 3/29/2021");
+        listItems.add("Kellogg's chews, 5/12/2021");
+        listItems.add("Poppy Seed Muffins, 3/29/2021");
         listItems.add("twinkies, 1/20/2070");
         listItems.add("Test Item Filler, 1/20/2020");
         listItems.add("Test Item Filler, 1/20/2020");

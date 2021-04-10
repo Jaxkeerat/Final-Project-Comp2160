@@ -10,15 +10,15 @@
         android:layout_width="fill_parent"
         android:layout_height="66dp"
         android:onClick="mainPage"
-        android:text="Back To Main Menu" />
+        android:text="@string/back_to_main_menu" />
 
     <ListView
         android:id="@+id/simpleListView"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="664dp"
         android:divider="#f00"
         android:dividerHeight="1dp"
-        android:listSelector="#0f0"/> <!--list selector in green color--> />
+        android:listSelector="#0f0" /> <!--list selector in green color-->
 </LinearLayout>
 
 <!-- List Item code example match stack overflow example to use as base -->
