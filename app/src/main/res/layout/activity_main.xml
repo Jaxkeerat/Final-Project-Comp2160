@@ -18,30 +18,28 @@
         android:rotation="90"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.442"
+        app:layout_constraintHorizontal_bias="0.435"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.635"
-        app:srcCompat="@drawable/background2" />
+        app:layout_constraintVertical_bias="0.596"
+        app:srcCompat="@drawable/background_3" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="88dp"
-        android:background="#003D5AFE"
+        android:id="@+id/heading1"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#00757EAE"
         android:paddingTop="40dp"
         android:text="@string/daily_grocery_tracker"
         android:textAlignment="center"
         android:textAllCaps="true"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
+        android:textColor="#ffffff"
+        android:textSize="30sp"
         android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintBottom_toTopOf="@+id/heading2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -51,10 +49,10 @@
         app:layout_constraintGuide_percent="1.0" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/heading2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="52dp"
+        android:layout_marginBottom="56dp"
         android:gravity="center"
         android:text="@string/app_going_to_reduce_the_waste_of_grocery"
         android:textAllCaps="true"
@@ -62,27 +60,26 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/addBTN"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/addBTN"
         android:layout_width="152dp"
         android:layout_height="130dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="50dp"
         android:background="#00FFFFFF"
         android:foreground="@drawable/icon"
         android:onClick="openAddActivity"
         app:layout_constraintBottom_toTopOf="@+id/currButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/currButton"
         android:layout_width="152dp"
         android:layout_height="130dp"
-        android:layout_marginBottom="72dp"
+        android:layout_marginBottom="50dp"
         android:backgroundTint="@color/common_google_signin_btn_text_dark_disabled"
         android:foreground="@drawable/icon2"
         android:onClick="openCurrent"
@@ -90,13 +87,14 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/expButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/expButton"
         android:layout_width="152dp"
         android:layout_height="130dp"
+        android:layout_marginBottom="16dp"
         android:backgroundTint="@color/common_google_signin_btn_text_dark"
         android:foreground="@drawable/current_icon"
         android:onClick="openExpActivity"
@@ -105,7 +103,7 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline

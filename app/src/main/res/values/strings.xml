@@ -19,8 +19,8 @@
     <string name="zero">0</string>
     <string name="current_products">Current Products</string>
     <string name="string_expired_products">Expired Products</string>
-    <string name="textview" />
+    <string name="textview" > Expired Products </string>
     <string name="price_hint">0.00</string>
-    <string name="app_going_to_reduce_the_waste_of_grocery">App going to reduce the waste of Grocery...</string>
+    <string name="app_going_to_reduce_the_waste_of_grocery">An App to keep track of your Grocery...</string>
     <string name="daily_grocery_tracker">Daily Grocery Tracker</string>
 </resources>

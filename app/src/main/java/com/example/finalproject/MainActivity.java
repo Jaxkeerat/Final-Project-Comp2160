@@ -22,13 +22,13 @@ public class MainActivity extends AppCompatActivity {
         currentButton = findViewById(R.id.currButton);
         expiredButton =  findViewById(R.id.expButton);
 
-        openCurrent();
-        openAddActivity();
-        openExpActivity();
+        //openCurrent();
+       // openAddActivity();
+       // openExpActivity();
 
     }
 
-    public void openAddActivity(){
+    public void openAddActivity(View view){
         Button openAdd = (addButton);
         openAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    public void openCurrent() {
+    public void openCurrent(View view) {
         Button openCurrent = (currentButton);
         openCurrent.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    public void openExpActivity(){
+    public void openExpActivity(View view){
         Button openExp = (expiredButton);
         openExp.setOnClickListener(new View.OnClickListener() {
             @Override
