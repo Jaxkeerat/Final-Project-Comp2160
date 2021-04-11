@@ -1,34 +1,41 @@
 package com.example.finalproject;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.MutableData;
 import com.google.firebase.database.Query;
-import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 
 
-public class add_new_item extends AppCompatActivity {
+public class add_new_item<requestCode> extends AppCompatActivity {
 
     private EditText product, price_input, expiry, purchase;
-    private Button add_image_button, button2;
+    private Button image_btn1, button2;
     int count =0;
     private Button plus, minus;
     private EditText item_quantity;
+    private ImageView imageView;
 
     FirebaseDatabase firebaseDatabase;
 
@@ -58,6 +65,8 @@ public class add_new_item extends AppCompatActivity {
         minus = findViewById(R.id.minus);
         item_quantity = findViewById(R.id.item_quantity);
         button2 = findViewById(R.id.button2);
+        image_btn1=findViewById(R.id.image_btn1);
+        imageView = findViewById(R.id.imageView);
 
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,13 +83,36 @@ public class add_new_item extends AppCompatActivity {
                 item_quantity.setText(String.valueOf(count));
             }
         });
+        //image capture
+        if(ContextCompat.checkSelfPermission(add_new_item.this,
+                Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(add_new_item.this,
+                    new String[]{
+                            Manifest.permission.CAMERA
+                    },
+                    100);
+        }
 
-        /*add_image_button.setOnClickListener(new View.OnClickListener() {
+
+        image_btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                Intent intent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent,100);
             }
-        });*/
+
+        });
+    }
+    @SuppressLint("MissingSuperCall")
+    @Override
+    protected void onActivityResult( int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == 100) {
+            Bitmap captureImage = (Bitmap) data.getExtras().get("data");
+            imageView.setImageBitmap(captureImage);
+        }
+
+
 
         //add to firebase
         button2.setOnClickListener(new View.OnClickListener() {
@@ -127,8 +159,10 @@ public class add_new_item extends AppCompatActivity {
                 Toast.makeText(add_new_item.this, "Fail to add Product ",Toast.LENGTH_SHORT).show();
             }
         });
-    }
 
+
+
+    }
 
 
 }

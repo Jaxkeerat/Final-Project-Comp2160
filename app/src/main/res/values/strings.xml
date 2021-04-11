@@ -25,4 +25,6 @@
     <string name="daily_grocery_tracker">Daily Grocery Tracker</string>
     <string name="back_to_main_menu">Back To Main Menu</string>
     <string name="expired_products">Expired Products</string>
+    <string name="add_image">Add Image</string>
+    <string name="info">info</string>
 </resources>

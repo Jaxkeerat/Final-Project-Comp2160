@@ -2,7 +2,9 @@ package com.example.finalproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -13,8 +15,9 @@ import java.util.Collections;
 public class expired_products extends AppCompatActivity {
 
     ArrayList<String> items = new ArrayList<>();
-    ArrayAdapter<String>  outputEx ;
+    ArrayAdapter<String> outputEx;
     ListView expiredProd;
+    private Button info;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,5 +38,21 @@ public class expired_products extends AppCompatActivity {
         Collections.sort(items);
         outputEx = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
         expiredProd.setAdapter(outputEx);
+
+
+        info = (Button) findViewById(R.id.info);
+
+        info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openproductinfo();
+            }
+        });
+    }
+    public void openproductinfo() {
+
+        Intent intent = new Intent(this, productinfo.class);
+        startActivity(intent);
+
     }
 }

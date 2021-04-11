@@ -1,4 +1,4 @@
-package com.example.finalproject;
+/*package com.example.finalproject;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -155,3 +155,4 @@ public class Firebase {
     // [END post_stars_increment]
 
 }
+*/

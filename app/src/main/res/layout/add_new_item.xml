@@ -203,7 +203,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="204dp"
+            android:layout_height="158dp"
             android:layout_marginTop="35dp"
             android:orientation="horizontal">
 
@@ -217,15 +217,23 @@
                 tools:layout_editor_absoluteX="41dp"
                 tools:layout_editor_absoluteY="437dp" />
 
+
             <Button
-                android:id="@+id/add_image_button"
+                android:id="@+id/image_btn1"
                 android:layout_width="0dp"
-                android:layout_height="45dp"
+                android:layout_height="47dp"
                 android:layout_weight="2"
                 android:background="@drawable/add_product"
-                android:text="@string/click_to_add_image"
+                android:text="@string/add_image"
                 tools:layout_editor_absoluteX="183dp"
                 tools:layout_editor_absoluteY="446dp" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="100dp"
+                android:layout_height="106dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/app_icon" />
         </LinearLayout>
 
 
