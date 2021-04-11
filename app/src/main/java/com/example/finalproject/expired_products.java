@@ -45,11 +45,11 @@ public class expired_products extends AppCompatActivity {
         info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openproductinfo();
+                openProductInfo();
             }
         });
     }
-    public void openproductinfo() {
+    public void openProductInfo() {
 
         Intent intent = new Intent(this, productinfo.class);
         startActivity(intent);

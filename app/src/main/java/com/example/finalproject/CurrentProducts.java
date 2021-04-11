@@ -67,26 +67,7 @@ public class CurrentProducts extends AppCompatActivity {
         listItems.add("Kellogg's chews, 5/12/2021");
         listItems.add("Poppy Seed Muffins, 3/29/2021");
         listItems.add("twinkies, 1/20/2070");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
+
         Collections.sort(listItems);
 
         //populate list from db
