@@ -24,7 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class add_new_item extends AppCompatActivity {
 
-    private EditText product, price_input, editTextDate2, editTextDate;
+    private EditText product, price_input, expiry, purchase;
     private Button add_image_button, button2;
     int count =0;
     private Button plus, minus;
@@ -43,8 +43,8 @@ public class add_new_item extends AppCompatActivity {
 
         product=(EditText)findViewById(R.id.product);
         price_input=(EditText)findViewById(R.id.price_input);
-        editTextDate2=(EditText)findViewById(R.id.editTextDate2);
-        editTextDate=(EditText)findViewById(R.id.editTextDate);
+        expiry=(EditText)findViewById(R.id.editTextDate2);
+        purchase=(EditText)findViewById(R.id.editTextDate);
 
         firebaseDatabase =FirebaseDatabase.getInstance();
 
@@ -82,13 +82,14 @@ public class add_new_item extends AppCompatActivity {
             }
         });*/
 
+        //add to firebase
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 String product_name = product.getText().toString();
-                String Date_1 = editTextDate2.getText().toString();
-                String Date_2 = editTextDate.getText().toString();
+                String Date_1 = expiry.getText().toString();
+                String Date_2 = purchase.getText().toString();
                 String price =price_input.getText().toString();
                 String quantity= item_quantity.getText().toString();
 
@@ -115,11 +116,10 @@ public class add_new_item extends AppCompatActivity {
         data_storage.setItem_quantity(quantity);
 
         Query databaseReference;
-        mdb.addValueEventListener(new ValueEventListener() {
+        mdb.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                mdb.setValue(data_storage);
-
+                mdb.push().setValue(data_storage);
                 Toast.makeText(add_new_item.this,"Product has been added", Toast.LENGTH_SHORT).show();
             }
             @Override
