@@ -63,7 +63,7 @@ public class add_new_item extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 count++;
-                item_quantity.setText(count);
+                item_quantity.setText(String.valueOf(count));
              }
         });
 
@@ -71,7 +71,7 @@ public class add_new_item extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 count--;
-                item_quantity.setText(count);
+                item_quantity.setText(String.valueOf(count));
             }
         });
 
