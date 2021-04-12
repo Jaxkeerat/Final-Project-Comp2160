@@ -101,6 +101,7 @@ public class CurrentProducts extends AppCompatActivity {
                 final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
 
                 // show the popup window
+                popupWindow.setAnimationStyle(R.anim.myfirst_animation);
                 popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
                 //popUpData.setText(message);
                 // dismiss the popup window when touched
