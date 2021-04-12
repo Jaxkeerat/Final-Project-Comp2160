@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
 import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,71 +31,78 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
 public class CurrentProducts extends AppCompatActivity {
 
     FirebaseDatabase firebaseDatabase;
-    private DatabaseReference databaseReference;
+    DatabaseReference databaseReference;
     Data_storage data_storage;
-
+    ArrayAdapter<String> adapter;
 
     //LIST OF ARRAY STRINGS WHICH WILL SERVE AS LIST ITEMS
-    ArrayList<String> listItems=new ArrayList<String>();
+    ArrayList<String> listItems = new ArrayList<String>();
+    private ArrayList<String> productsList = new ArrayList<String>();
     //DEFINING A STRING ADAPTER WHICH WILL HANDLE THE DATA OF THE LIST VIEW
-    ArrayAdapter<String> adapter;
     //RECORDING HOW MANY TIMES THE BUTTON HAS BEEN CLICKED
     int clickCounter = 0;
     ListView currentProd;
     Button mainPage, addItem;
     //use as base add save states for when view is changed
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        databaseInitialize();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.current_products);
         currentProd = (ListView) findViewById(R.id.simpleListView);
         mainPage = findViewById(R.id.main_page_button);
-        //database connection
-        databaseReference =  FirebaseDatabase.getInstance("https://finalproject-cd6bb-default-rtdb.firebaseio.com/").getReference();
 
-        //load temp files
-        String name = "good food";
-        String expDate = "3/29/2021";
+        Map<String, String> cpal = new HashMap<String, String>();
 
-        listItems.add("Twinkies, 1/20/2070");
-        listItems.add("Baked Beans, 4/20/2021");
-        listItems.add("Wonder Bread, 1/27/2022");
-        listItems.add("Kellogg's chews, 5/12/2021");
-        listItems.add("Poppy Seed Muffins, 3/29/2021");
-        listItems.add("twinkies, 1/20/2070");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        listItems.add("Test Item Filler, 1/20/2020");
-        Collections.sort(listItems);
-
-        //populate list from db
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listItems);
-        currentProd.setAdapter(adapter);
+        productsList.add("twinkies, 1/20/2070");
 
         mainPage();
+        //populate list from db
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, productsList);
+        currentProd.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+    }
+
+    public void databaseInitialize(){
+        //database connection
+        databaseReference =  FirebaseDatabase.getInstance("https://finalproject-cd6bb-default-rtdb.firebaseio.com/").getReference();
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            //any time database changes this will be envoked + once on create
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //hold ctrl alt v to get correct type its like magic
+                //get all of the children at this level
+                Iterable<DataSnapshot> children = snapshot.getChildren();
+
+                for (DataSnapshot child: children) {
+                    FireBaseData stuff = child.getValue(FireBaseData.class);
+                    String temp = stuff.toString();
+                    addItemToList(temp, adapter);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
+
+    public void addItemToList(String string, ArrayAdapter<String> adapter){
+        this.productsList.add(string);
+        adapter.notifyDataSetChanged();
     }
 
     public void mainPage(){
@@ -110,65 +119,5 @@ public class CurrentProducts extends AppCompatActivity {
 
         return combinedStr;
     }
-
-    /*
-    private void initializeListView() {
-        // creating a new array adapter for our list view.
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, listItems);
-
-        // below line is used for getting reference
-        // of our Firebase Database.
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-
-        // in below line we are calling method for add child event
-        // listener to get the child of our database.
-        reference.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                // this method is called when new child is added to
-                // our data base and after adding new child
-                // we are adding that item inside our array list and
-                // notifying our adapter that the data in adapter is changed.
-                listItems.add(snapshot.getValue(String.class));
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                // this method is called when the new child is added.
-                // when the new child is added to our list we will be
-                // notifying our adapter that data has changed.
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-                // below method is called when we remove a child from our database.
-                // inside this method we are removing the child from our array list
-                // by comparing with it's value.
-                // after removing the data we are notifying our adapter that the
-                // data has been changed.
-                listItems.remove(snapshot.getValue(String.class));
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                // this method is called when we move our
-                // child in our database.
-                // in our code we are note moving any child.
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                // this method is called when we get any
-                // error from Firebase with error.
-            }
-        });
-        // below line is used for setting
-        // an adapter to our list view.
-        currentProd.setAdapter(adapter);
-    }
-     */
 
 }
