@@ -180,7 +180,7 @@ public class expired_products extends AppCompatActivity {
                     }
                 }
                 BigDecimal losses = truncateDecimal( Double.parseDouble(myloss), 2);
-                addItemToList( " Your Potential Loss: "+losses, outputEx, count, "This Is your \n  Potential \nlost money \nFrom Waste.");
+                addItemToList( " Your Potential Loss: $"+losses, outputEx, count, "This Is your \n  Potential \nlost money \nFrom Waste.");
             }
 
             @Override
