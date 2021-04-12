@@ -49,21 +49,19 @@ public class CurrentProducts extends AppCompatActivity {
     Data_storage data_storage;
     ArrayAdapter<String> adapter;
 
-    //LIST OF ARRAY STRINGS WHICH WILL SERVE AS LIST ITEMS
-    ArrayList<String> listItems = new ArrayList<String>();
     private ArrayList<String> productsList = new ArrayList<String>();
-    //DEFINING A STRING ADAPTER WHICH WILL HANDLE THE DATA OF THE LIST VIEW
-    //RECORDING HOW MANY TIMES THE BUTTON HAS BEEN CLICKED
-    int clickCounter = 0;
+
+    private Map<Integer, String> productInfo = new HashMap<Integer, String>();
+
     ListView currentProd;
-    Button mainPage, addItem;
-    //use as base add save states for when view is changed
+    Button mainPage;
 
     TextView popUpData;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         popUpData = (TextView)findViewById(R.id.popupmsg);
         databaseInitialize();
 
@@ -85,16 +83,16 @@ public class CurrentProducts extends AppCompatActivity {
         currentProd.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String text = "This is a test to see if it does \n" +
-                        "what i want it to do \n" +
-                        "wiioop";
-
                 //set data for popo up msg
+                //Toast.makeText(CurrentProducts.this, "currently selected: "+i, Toast.LENGTH_SHORT).show();
+                String message = (String)productInfo.get(i);
 
 
                 LayoutInflater inflater = (LayoutInflater)
                         getSystemService(LAYOUT_INFLATER_SERVICE);
                 View popupView = inflater.inflate(R.layout.popup_window, null);
+                TextView messageBox = (TextView)popupView.findViewById(R.id.popupmsg);
+                messageBox.setText(message);
 
                 // create the popup window
                 int width = LinearLayout.LayoutParams.WRAP_CONTENT;
@@ -104,7 +102,7 @@ public class CurrentProducts extends AppCompatActivity {
 
                 // show the popup window
                 popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
-
+                //popUpData.setText(message);
                 // dismiss the popup window when touched
                 popupView.setOnTouchListener(new View.OnTouchListener() {
                     @Override
@@ -129,11 +127,18 @@ public class CurrentProducts extends AppCompatActivity {
                 //hold ctrl alt v to get correct type its like magic
                 //get all of the children at this level
                 Iterable<DataSnapshot> children = snapshot.getChildren();
-
+                int count = 0;
                 for (DataSnapshot child: children) {
                     FireBaseData stuff = child.getValue(FireBaseData.class);
-                    String temp = stuff.toString();
-                    addItemToList(temp, adapter);
+                    String productDisplayData = stuff.toString();
+
+                    //custom setget
+                    String prodGeneralInfo = stuff.setGetGeneralInfo();
+
+                    //don't question this took me hours to figure out this bug and i found a work around
+                    addItemToList(productDisplayData, adapter, count, prodGeneralInfo);
+                    count++;
+
                 }
             }
 
@@ -145,9 +150,10 @@ public class CurrentProducts extends AppCompatActivity {
 
     }
 
-    public void addItemToList(String string, ArrayAdapter<String> adapter){
+    public void addItemToList(String string, ArrayAdapter<String> adapter, int key, String genInfo){
         this.productsList.add(string);
         adapter.notifyDataSetChanged();
+        this.productInfo.put(key,genInfo);
     }
 
     public void mainPage(){

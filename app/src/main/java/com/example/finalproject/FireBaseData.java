@@ -54,18 +54,22 @@ public class FireBaseData {
         return generalInfo;
     }
 
-    public void setGeneralInfo(String generalInfo) {
-        this.generalInfo = product +" General Info: \n " +
-                "Price: "+price_input+"\n" +
+    public String setGetGeneralInfo() {
+        this.generalInfo = product +" General Info: \n\n" +
+                "Price: $"+price_input+"\n" +
                 "Purchase Date: "+editTextDate+"\n" +
-                "Quantity Purchased: "+item_quantity+"\n" +
+                "Quantity: "+item_quantity+"\n" +
                 "Best Before: "+editTextDate2+"\n" +
-                "\n Remember Best Before date is \n" +
-                "only a suggestion. Don't waste food, \n" +
-                "always check online for best practices :)";
+                "\nRemember \n" +
+                "No Waste.\n" +
+                "Leaves a Great Taste \n" +
+                "Don't Throw it away\n" +
+                "Unless its gone bad";
+
+        return generalInfo;
     }
     @Override
     public String toString() {
-        return product + " --> BestBefore: " + editTextDate2;
+        return product + " BestBefore: " + editTextDate2;
     }
 }
