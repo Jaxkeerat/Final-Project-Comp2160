@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
 import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,52 +31,86 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
 public class CurrentProducts extends AppCompatActivity {
 
     FirebaseDatabase firebaseDatabase;
-    private DatabaseReference databaseReference;
+    DatabaseReference databaseReference;
     Data_storage data_storage;
-
+    ArrayAdapter<String> adapter;
 
     //LIST OF ARRAY STRINGS WHICH WILL SERVE AS LIST ITEMS
-    ArrayList<String> listItems=new ArrayList<String>();
+    ArrayList<String> listItems = new ArrayList<String>();
+    private ArrayList<String> productsList = new ArrayList<String>();
+
     //DEFINING A STRING ADAPTER WHICH WILL HANDLE THE DATA OF THE LIST VIEW
-    ArrayAdapter<String> adapter;
     //RECORDING HOW MANY TIMES THE BUTTON HAS BEEN CLICKED
     int clickCounter = 0;
     ListView currentProd;
     Button mainPage, addItem;
     //use as base add save states for when view is changed
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        databaseInitialize();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.current_products);
         currentProd = (ListView) findViewById(R.id.simpleListView);
         mainPage = findViewById(R.id.main_page_button);
+
+        Map<String, String> cpal = new HashMap<String, String>();
+
+        productsList.add("twinkies, 1/20/2070");
+
+        mainPage();
+        //populate list from db
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, productsList);
+        currentProd.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+    }
+
+    public void databaseInitialize(){
         //database connection
         databaseReference =  FirebaseDatabase.getInstance("https://finalproject-cd6bb-default-rtdb.firebaseio.com/").getReference();
 
-        //load temp files
-        String name = "good food";
-        String expDate = "3/29/2021";
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            //any time database changes this will be envoked + once on create
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //hold ctrl alt v to get correct type its like magic
+                Toast.makeText(CurrentProducts.this,"Made it to onDataChange", Toast.LENGTH_SHORT).show();
+                //get all of the children at this level
+                Iterable<DataSnapshot> children = snapshot.getChildren();
+                if(children != null){
+                    Toast.makeText(CurrentProducts.this,"not null", Toast.LENGTH_SHORT).show();
+                }
+                for (DataSnapshot child: children) {
+                    FireBaseData stuff = child.getValue(FireBaseData.class);
+                    String temp = stuff.toString();
+                    Toast.makeText(CurrentProducts.this, temp +"  --the temp", Toast.LENGTH_SHORT).show();
+                    addItemToList(temp, adapter);
+                }
+            }
 
-        listItems.add("Twinkies, 1/20/2070");
-        listItems.add("Baked Beans, 4/20/2021");
-        listItems.add("Wonder Bread, 1/27/2022");
-        listItems.add("Kellogg's chews, 5/12/2021");
-        listItems.add("Poppy Seed Muffins, 3/29/2021");
-        listItems.add("twinkies, 1/20/2070");
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-        Collections.sort(listItems);
+            }
+        });
 
-        //populate list from db
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listItems);
-        currentProd.setAdapter(adapter);
+    }
 
-        mainPage();
+    public void addItemToList(String string, ArrayAdapter<String> adapter){
+        this.productsList.add(string);
+        adapter.notifyDataSetChanged();
+
+       // Toast.makeText(CurrentProducts.this, "added -- "+string, Toast.LENGTH_SHORT).show();
     }
 
     public void mainPage(){
@@ -91,6 +127,9 @@ public class CurrentProducts extends AppCompatActivity {
 
         return combinedStr;
     }
+
+    //Firebase Pull Code
+
 
     /*
     private void initializeListView() {
