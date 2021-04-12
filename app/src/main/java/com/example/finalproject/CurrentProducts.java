@@ -62,7 +62,6 @@ public class CurrentProducts extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        popUpData = (TextView)findViewById(R.id.popupmsg);
         databaseInitialize();
 
         super.onCreate(savedInstanceState);
@@ -70,12 +69,9 @@ public class CurrentProducts extends AppCompatActivity {
         currentProd = (ListView) findViewById(R.id.simpleListView);
         mainPage = findViewById(R.id.main_page_button);
 
-        Map<String, String> cpal = new HashMap<String, String>();
-
-        //productsList.add("twinkies, 1/20/2070");
-
         mainPage();
         //populate list from db
+
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, productsList);
         currentProd.setAdapter(adapter);
         adapter.notifyDataSetChanged();
