@@ -112,8 +112,6 @@ public class add_new_item<requestCode> extends AppCompatActivity {
             imageView.setImageBitmap(captureImage);
         }
 
-
-
         //add to firebase
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,15 +124,10 @@ public class add_new_item<requestCode> extends AppCompatActivity {
                 String quantity= item_quantity.getText().toString();
 
                 if (TextUtils.isEmpty(product_name) && TextUtils.isEmpty(Date_1) && TextUtils.isEmpty(Date_2) && TextUtils.isEmpty(quantity)&& TextUtils.isEmpty(price)) {
-                    
                     Toast.makeText(add_new_item.this, "Please add some data.", Toast.LENGTH_SHORT).show();
                 } else {
-
-                    addDatatoFirebase(product_name, Date_1, Date_2, price, quantity );
+                    addDatatoFirebase(product_name, Date_1, Date_2, price, quantity);
                 }
-
-                
-
             }
         });
     }
@@ -147,12 +140,30 @@ public class add_new_item<requestCode> extends AppCompatActivity {
         data_storage.setPrice_input(price);
         data_storage.setItem_quantity(quantity);
 
+        final boolean[] successfullAdd = {false};
+        //added reset after send
+        product=(EditText)findViewById(R.id.product);
+        price_input=(EditText)findViewById(R.id.price_input);
+        expiry=(EditText)findViewById(R.id.editTextDate2);
+        purchase=(EditText)findViewById(R.id.editTextDate);
+        item_quantity = findViewById(R.id.item_quantity);
+
+        product.setText("");
+        price_input.setText("");
+        expiry.setText("");
+        purchase.setText("");
+        count = 0;
+        item_quantity.setText(String.valueOf(count));
+
+
+
         Query databaseReference;
         mdb.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mdb.push().setValue(data_storage);
                 Toast.makeText(add_new_item.this,"Product has been added", Toast.LENGTH_SHORT).show();
+                successfullAdd[0] =  true;
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -160,7 +171,21 @@ public class add_new_item<requestCode> extends AppCompatActivity {
             }
         });
 
+        if(successfullAdd[0]){
+            //added reset after send
+            product=(EditText)findViewById(R.id.product);
+            price_input=(EditText)findViewById(R.id.price_input);
+            expiry=(EditText)findViewById(R.id.editTextDate2);
+            purchase=(EditText)findViewById(R.id.editTextDate);
+            item_quantity = findViewById(R.id.item_quantity);
 
+            product.setText("");
+            price_input.setText("");
+            expiry.setText("");
+            purchase.setText("");
+            count = 0;
+            item_quantity.setText(String.valueOf(count));
+        }
 
     }
 

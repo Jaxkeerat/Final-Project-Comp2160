@@ -40,10 +40,10 @@ public class expired_products extends AppCompatActivity {
         String prodName = "Food";
         String expiryDate = "12/12/2021";
 
-        items.add("Twinkies, 1/20/2070");
-        items.add("Baked Beans, 4/20/2021");
-        items.add("Wonder Bread, 1/27/2022");
-        items.add("Kellogg's chews, 5/12/2021");
+        items.add("Twinkies, 2/20/2021");
+        items.add("Baked Beans, 4/07/2021");
+        items.add("Wonder Bread, 4/10/2021");
+        items.add("Kellogg's chews, 2/12/2021");
         items.add("Poppy Seed Muffins, 3/29/2021");
 
         Collections.sort(items);
@@ -58,7 +58,6 @@ public class expired_products extends AppCompatActivity {
             public void onClick(View v) {
                 openProductInfo();
             }
-
 
         });
     }
