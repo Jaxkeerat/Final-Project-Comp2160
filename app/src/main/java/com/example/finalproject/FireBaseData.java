@@ -66,6 +66,6 @@ public class FireBaseData {
     }
     @Override
     public String toString() {
-        return product + " Best Before: " + editTextDate2;
+        return product + " --> BestBefore: " + editTextDate2;
     }
 }
