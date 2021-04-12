@@ -9,10 +9,19 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.ktx.Firebase;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class expired_products extends AppCompatActivity {
+
+
+    FirebaseDatabase firebaseDB ;
+    private DatabaseReference dbReference;
+
 
     ArrayList<String> items = new ArrayList<>();
     ArrayAdapter<String> outputEx;
@@ -25,6 +34,9 @@ public class expired_products extends AppCompatActivity {
         setContentView(R.layout.activity_expired_products);
 
         expiredProd = (ListView) findViewById(R.id.ExListView);
+        dbReference = FirebaseDatabase.getInstance("https://finalproject-cd6bb-default-rtdb.firebaseio.com/").getReference();
+
+        expiredProd = (ListView) findViewById(R.id.ExListView);
         String prodName = "Food";
         String expiryDate = "12/12/2021";
 
@@ -33,7 +45,6 @@ public class expired_products extends AppCompatActivity {
         items.add("Wonder Bread, 1/27/2022");
         items.add("Kellogg's chews, 5/12/2021");
         items.add("Poppy Seed Muffins, 3/29/2021");
-        items.add("twinkies, 1/20/2070");
 
         Collections.sort(items);
         outputEx = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
@@ -47,6 +58,8 @@ public class expired_products extends AppCompatActivity {
             public void onClick(View v) {
                 openproductinfo();
             }
+
+
         });
     }
     public void openproductinfo() {

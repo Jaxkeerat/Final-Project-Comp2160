@@ -20,15 +20,15 @@ public class MainActivity extends AppCompatActivity {
 
         addButton = findViewById(R.id.addBTN);
         currentButton = findViewById(R.id.currButton);
-        expiredButton =  findViewById(R.id.expButton);
+        expiredButton = findViewById(R.id.expButton);
 
         //openCurrent();
-       // openAddActivity();
-       // openExpActivity();
+        // openAddActivity();
+        // openExpActivity();
 
     }
 
-    public void openAddActivity(View view){
+    public void openAddActivity(View view) {
         Button openAdd = (addButton);
         openAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     public void openCurrent(View view) {
         Button openCurrent = (currentButton);
         openCurrent.setOnClickListener(new View.OnClickListener() {
@@ -46,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    public void openExpActivity(View view){
+
+    public void openExpActivity(View view) {
         Button openExp = (expiredButton);
         openExp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +56,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, expired_products.class));
             }
         });
+    }
 
     }
-}

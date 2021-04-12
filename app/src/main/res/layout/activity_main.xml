@@ -14,24 +14,31 @@
         android:layout_height="1670dp"
         android:contentDescription="@string/background"
         android:paddingTop="5dp"
-        android:paddingBottom="20dp"
+        android:paddingBottom="50dp"
         android:rotation="90"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.435"
+        app:layout_constraintHorizontal_bias="0.475"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.596"
+        app:layout_constraintVertical_bias="0.447"
         app:srcCompat="@drawable/background_3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="240dp" />
 
     <TextView
         android:id="@+id/heading1"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:background="#00757EAE"
+        android:gravity="center"
         android:paddingTop="40dp"
         android:text="@string/daily_grocery_tracker"
-        android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="#ffffff"
         android:textSize="30sp"
@@ -52,20 +59,19 @@
         android:id="@+id/heading2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="56dp"
         android:gravity="center"
         android:text="@string/app_going_to_reduce_the_waste_of_grocery"
         android:textAllCaps="true"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/addBTN"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <Button
         android:id="@+id/addBTN"
-        android:layout_width="152dp"
-        android:layout_height="130dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginBottom="50dp"
         android:background="#00FFFFFF"
         android:foreground="@drawable/icon"
@@ -77,8 +83,8 @@
 
     <Button
         android:id="@+id/currButton"
-        android:layout_width="152dp"
-        android:layout_height="130dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginBottom="50dp"
         android:backgroundTint="@color/common_google_signin_btn_text_dark_disabled"
         android:foreground="@drawable/icon2"
@@ -92,13 +98,12 @@
 
     <Button
         android:id="@+id/expButton"
-        android:layout_width="152dp"
-        android:layout_height="130dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/common_google_signin_btn_text_dark"
         android:foreground="@drawable/current_icon"
         android:onClick="openExpActivity"
-        android:paddingBottom="20dp"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"

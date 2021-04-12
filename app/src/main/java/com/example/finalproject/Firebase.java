@@ -32,7 +32,7 @@ public class Firebase {
     private DatabaseReference mDatabase;
     // [END declare_database_ref]
 
-    public ReadAndWriteSnippets(DatabaseReference database) {
+    public void ReadAndWriteSnippets(DatabaseReference database) {
         // [START initialize_database_ref]
         mDatabase = FirebaseDatabase.getInstance().getReference();
         // [END initialize_database_ref]
@@ -152,7 +152,4 @@ public class Firebase {
         updates.put("user-posts/"+uid+"/"+key+"/starCount", ServerValue.increment(1));
         mDatabase.updateChildren(updates);
     }
-    // [END post_stars_increment]
-
-}
-*/
+    // [END post_stars_increment */

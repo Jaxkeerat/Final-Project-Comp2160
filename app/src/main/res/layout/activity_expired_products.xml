@@ -4,21 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#facfa9"
+    android:background="#FACFA9"
     android:orientation="horizontal"
     android:paddingBottom="20dp"
     tools:context=".expired_products">
 
     <ListView
         android:id="@+id/ExListView"
-        android:layout_width="417dp"
-        android:layout_height="677dp"
+        android:layout_width="410dp"
+        android:layout_height="597dp"
         android:cacheColorHint="#FDFDFD"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleEx">
+        app:layout_constraintTop_toBottomOf="@+id/titleEx"
+        app:layout_constraintVertical_bias="0.0">
 
     </ListView>
 
@@ -32,19 +33,20 @@
         android:textColor="#FDFCFC"
         android:textSize="30sp"
         android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/ExListView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/info"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:paddingBottom="40dp"
+        android:layout_width="399dp"
+        android:layout_height="70dp"
         android:text="@string/info"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ExListView"
+        app:layout_constraintVertical_bias="0.0" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
