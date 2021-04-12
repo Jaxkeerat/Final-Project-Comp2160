@@ -18,16 +18,18 @@ public class FireBaseData {
         this.product = product;
     }
 
-    public String getPrice_input() {
-        return price_input;
+    public double getPrice_input() {
+        double dnum = Double.parseDouble(price_input);
+        return dnum;
     }
 
     public void setPrice_input(String price_input) {
         this.price_input = price_input;
     }
 
-    public String getItem_quantity() {
-        return item_quantity;
+    public int getItem_quantity() {
+        int q = Integer.parseInt(item_quantity);
+        return q;
     }
 
     public void setItem_quantity(String item_quantity) {

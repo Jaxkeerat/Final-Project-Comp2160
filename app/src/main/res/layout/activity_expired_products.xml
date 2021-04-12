@@ -31,7 +31,7 @@
         android:text="@string/expired_products"
         android:textAllCaps="true"
         android:textColor="#FDFCFC"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

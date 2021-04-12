@@ -24,7 +24,7 @@
     <string name="app_going_to_reduce_the_waste_of_grocery">An App to keep track of your Grocery...</string>
     <string name="daily_grocery_tracker">Daily Grocery Tracker</string>
     <string name="back_to_main_menu">Back To Main Menu</string>
-    <string name="expired_products">Expired Products</string>
+    <string name="expired_products">Expired Products <br/> Day/Month/Year</string>
     <string name="add_image">Add Image</string>
     <string name="info">Expired Food Does not mean its bad. Tap to know more</string>
     <string name="grocery_expired">groceries expired ?</string>

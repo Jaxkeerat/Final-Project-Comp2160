@@ -2,12 +2,10 @@ package com.example.finalproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -15,41 +13,30 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
-import java.lang.Object;
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Calendar;
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.GregorianCalendar;
-import android.text.TextUtils;
+
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import android.widget.Toast;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.ChildEventListener;
+import androidx.annotation.NonNull;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.MutableData;
-import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class expired_products extends AppCompatActivity {
 
@@ -155,6 +142,9 @@ public class expired_products extends AppCompatActivity {
 
     public void databaseInitialize(){
         //database connection
+
+        final double[] potentailLoss = {0};
+
         databaseReference =  FirebaseDatabase.getInstance("https://finalproject-cd6bb-default-rtdb.firebaseio.com/").getReference();
         databaseReference.addValueEventListener(new ValueEventListener() {
             //any time database changes this will be envoked + once on create
@@ -164,6 +154,7 @@ public class expired_products extends AppCompatActivity {
                 //get all of the children at this level
                 Iterable<DataSnapshot> children = snapshot.getChildren();
                 int count = 0;
+                String myloss = "";
                 for (DataSnapshot child: children) {
                     FireBaseData stuff = child.getValue(FireBaseData.class);
                     String productDisplayData = stuff.toString();
@@ -173,17 +164,23 @@ public class expired_products extends AppCompatActivity {
 
                     //only add items to list if expired
                     String productDate = stuff.getEditTextDate2();
-                    try {
-                        //if not expired true and add to list
-                        if(checkIfExpired(productDate)){
-                            //don't question this took me hours to figure out this bug and i found a work around
-                            addItemToList(productDisplayData, outputEx, count, prodGeneralInfo);
-                            count++;
-                        }
-                    } catch (ParseException e) {
-                        e.printStackTrace();
+
+
+                    DateComparator myDC = new DateComparator();
+                    boolean isItExpired = myDC.compareDate(productDate);
+                    if(isItExpired) {
+                        //don't question this took me hours to figure out this bug and i found a work around
+                        addItemToList(productDisplayData, outputEx, count, prodGeneralInfo);
+                        count++;
+                        potentailLoss[0] = loss(potentailLoss[0], stuff.getPrice_input());
+                        Double tempNum = potentailLoss[0];
+                        //tempNum = tempNum * stuff.getItem_quantity();
+                        myloss = tempNum.toString();
+                        Log.d("CurrentLoss money: ", myloss);
                     }
                 }
+                BigDecimal losses = truncateDecimal( Double.parseDouble(myloss), 2);
+                addItemToList( " Your Potential Loss: "+losses, outputEx, count, "This Is your \n  Potential \nlost money \nFrom Waste.");
             }
 
             @Override
@@ -212,5 +209,17 @@ public class expired_products extends AppCompatActivity {
         }else
             return true;
     }
+    public Double loss(double current, double addme){
+        current += addme;
+        return current;
+    }
 
+    private static BigDecimal truncateDecimal(double x, int numberofDecimals)
+    {
+        if ( x > 0) {
+            return new BigDecimal(String.valueOf(x)).setScale(numberofDecimals, BigDecimal.ROUND_FLOOR);
+        } else {
+            return new BigDecimal(String.valueOf(x)).setScale(numberofDecimals, BigDecimal.ROUND_CEILING);
+        }
+    }
 }
